@@ -1,1224 +1,1817 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berry Blast and Blitz store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+       :root {
+            --primary-blue: #2a0b8c;
+            --secondary-purple: #8a2be2;
+            --light-blue: #5d5fef;
+            --dark-purple: #4b0082;
+            --accent-color: #9370db;
+            --white: #ffffff;
+            --light-gray: #e0e0e0;
+            --medium-gray: #e0e0ff;
+            --dark-gray: #424242;
+            --text-color: #212121;
+            --shadow: 0 4px 20px rgba(42, 11, 140, 0.25);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --gradient: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
+            --gradient-hover: linear-gradient(135deg, #3a1bcc, #9a4bff);
+             --accent-pink: #ff5d93;
+              --accent-purple: #9d4edd;
+             --accent-yellow: #66d4ff;
+            --gradient-text: linear-gradient(45deg, #5d5fef, #9370db, #8a2be2);
+            --fire-color: linear-gradient(to top, #5d5fef, #9370db, #8a2be2);
+            --particle-color: #5d5fef;
+        }
 
-  <!-- 
-    - primary meta tags
-  -->
-  <title>Grilli - Amazing & Delicious Food</title>
-  <meta name="title" content="Grilli - Amazing & Delicious Food">
-  <meta name="description" content="This is a Restaurant html template made by codewithsadee">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Poppins', sans-serif;
+        }
 
-  <!-- 
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+        body {
+                background: linear-gradient(135deg, #0a0e2a, #1a1240);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
 
-  <!-- 
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap" rel="stylesheet">
+        }
 
-  <!-- 
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(74, 123, 255, 0.1) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 80%, rgba(255, 94, 148, 0.1) 0%, transparent 20%);
+            z-index: -1;
+            pointer-events: none;
+        }
 
-  <!-- 
-    - preload images
-  -->
-  <link rel="preload" as="image" href="./assets/images/hero-slider-1.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-slider-2.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-slider-3.jpg">
+        /* Navigation Styles */
+        #nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(26, 58, 143, 0.95);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
 
+        .navTop {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--gradient);
+        }
+
+        .navItem {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-text {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .logo-text span {
+            color: var(--accent-yellow);
+        }
+
+        .navItem img {
+            height: 50px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            transition: transform 0.5s ease;
+        }
+
+        .navItem img:hover {
+            height: 50px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            transition: transform 0.5s ease;
+            animation: spin 20s linear infinite;
+            transform: scale(1.1) rotate(15deg);
+        }
+    
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        logo-text span {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 3s ease infinite;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.534);
+            border-radius: 30px;
+            padding: 5px 15px;
+            margin: 0 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .search:hover {
+            box-shadow: 0 4px 15px rgba(26, 58, 143, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .searchInput {
+            border: none;
+            background: transparent;
+            padding: 10px;
+            outline: none;
+            width: 200px;
+            font-size: 16px;
+            color: var(--dark-blue);
+            font-weight: 500;
+        }
+
+        .searchIcon {
+            cursor: pointer;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .searchIcon:hover {
+            color: var(--light-blue);
+            transform: scale(1.1);
+        }
+
+        .limitedOffer {
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .limitedOffer:hover {
+            background: var(--light-gray);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .limitedOffer i {
+            color: var(--accent-pink);
+            font-size: 1.2rem;
+        }
+
+        .navBottom {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 0;
+            border-top: 1px solid var(--medium-gray);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .menuItem {
+            margin: 0 18px;
+            font-size: 1.0rem;
+            cursor: pointer;
+            color: var(--dark-blue);
+            position: relative;
+            transition: var(--transition);
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 8px;
+            background: var(--gradient-text);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: #00129b;
+            animation: gradientText 3s ease infinite;
+        }
+
+        .menuItem:hover {
+            color: var(--primary-blue);
+            background: rgba(74, 123, 255, 0.1);
+        }
+
+        .menuItem::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .menuItem:hover::after {
+            width: 80%;
+        }
+
+        /* Slider Styles */
+        .slider {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            margin: 30px auto;
+            max-width: 1000px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            perspective: 600px;
+        }
+
+        .sliderWrapper {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .sliderItem {
+            width: 20%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .sliderImg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            z-index: 1;
+            transform: scale(1.0);
+            transition: transform 5s ease-out;
+        }
+
+        .sliderItem:hover .sliderImg {
+            transform: scale(1.1);
+        }
+
+        .sliderBg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(10, 28, 77, 0.8), rgba(26, 58, 143, 0.6));
+            z-index: 2;
+        }
+
+        .sliderContent {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 5%;
+            max-width: 900px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease 0.2s;
+        }
+
+        .sliderItem.active .sliderContent {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .sliderTitle {
+            color: var(--white);
+            font-size: 3.25rem;
+            font-weight: 800;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            line-height: 1.1;
+            font-family: 'Raleway', sans-serif;
+            letter-spacing: -1px;
+        }
+
+        .sliderTitle span {
+            color: var(--accent-yellow);
+            position: relative;
+        }
+
+        .sliderTitle span::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent-yellow);
+            border-radius: 2px;
+        }
+
+        .sliderPrice {
+            color: var(--white);
+            font-size: 2.8rem;
+            margin-bottom: 35px;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.089);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .buyButton {
+            position: relative;
+            z-index: 3;
+            background: var(--white);
+            color: var(--primary-blue);
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .buyButton::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-hover);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+
+        .buyButton:hover {
+            color: var(--white);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .buyButton:hover::before {
+            left: 0;
+        }
+
+        .sliderNav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .sliderDot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .sliderDot.active, .sliderDot:hover {
+            background: var(--white);
+            transform: scale(1.2);
+            border-color: var(--accent-yellow);
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 60px 5%;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 40px 5%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--light-blue) 0%, transparent 70%);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .features::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-pink) 0%, transparent 70%);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .feature {
+            text-align: center;
+            width: 27%;
+            min-width: 200px;
+            padding: 10px 10px;
+            margin: 10px;
+            border-radius: 10px;
+            transition: var(--transition);
+            background: rgba(217, 230, 255, 0.856);
+            border: 1px solid rgba(224, 232, 255, 0.8);
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .feature:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow);
+            background: var(--white);
+            border-color: var(--light-blue);
+        }
+
+        .featureIcon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 4px 8px rgba(26, 58, 143, 0.3));
+            transition: transform 0.5s ease;
+        }
+
+        .feature:hover .featureIcon {
+            transform: rotateY(360deg);
+        }
+
+        .featureTitle {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .featureTitle::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--light-blue);
+            border-radius: 2px;
+        }
+
+        .featureDesc {
+            font-size: 1.05rem;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* Product Section */
+        .product {
+            padding: 20px 5% 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3.2rem;
+            color: var(--primary-blue);
+            margin: 50px 0 40px;
+            position: relative;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 6px;
+            background: var(--light-blue);
+            border-radius: 3px;
+            box-shadow: 0 2px 10px rgba(74, 123, 255, 0.3);
+        }
+
+        .productDetails {
+            display: none;
+        }
+        .productDetails.active {
+            display: flex;
+        }
+
+        .productDetails {
+            display: flex;
+            margin: 50px 0;
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .productDetails.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .productDetails:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .productDetails:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(10, 28, 77, 0.25);
+        }
+
+        .productDetailImg {
+            width: 45%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .productDetails:hover .productDetailImg {
+            transform: scale(1.05);
+        }
+
+        .productDetailInfo {
+            width: 55%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(to right, var(--white), #f5f8ff);
+        }
+
+        .productDetailTitle {
+            font-size: 2.6rem;
+            margin-bottom: 25px;
+            color: var(--primary-blue);
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .productDetailTitle span {
+            color: var(--accent-pink);
+        }
+
+        .productDetailDesc {
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+
+        .productDetailPrice {
+            font-size: 2.3rem;
+            font-weight: bold;
+            color: var(--dark-blue);
+            margin-bottom: 35px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .productDetailPrice::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--light-blue);
+            border-radius: 2px;
+        }
+
+        .productDetailButton {
+            align-self: flex-start;
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            padding: 15px 45px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            box-shadow: 0 6px 15px rgba(26, 58, 143, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .productDetailButton::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-hover);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+
+        .productDetailButton:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(26, 58, 143, 0.4);
+        }
+
+        .productDetailButton:hover::before {
+            left: 0;
+        }
+
+        /* Payment Form */
+        .payment {
+            padding: 60px 5%;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin: 60px auto;
+            position: relative;
+            max-width: 800px;
+            background: linear-gradient(to bottom, #f5f8ff, var(--white));
+            border: 1px solid var(--light-blue);
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .payment.animate {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .payTitle {
+            font-size: 2.3rem;
+            margin-bottom: 40px;
+            color: var(--primary-blue);
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .payTitle::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--light-blue);
+            border-radius: 2px;
+        }
+
+        .payInput {
+            width: 100%;
+            padding: 16px 25px;
+            margin: 15px 0 25px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .payInput:focus {
+            border-color: var(--light-blue);
+            box-shadow: 0 0 0 4px rgba(58, 95, 205, 0.2);
+            outline: none;
+            transform: translateY(-3px);
+        }
+
+        .cardIcons {
+            display: flex;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .cardInfo {
+            display: flex;
+            gap: 20px;
+        }
+
+        .payInput.sm {
+            width: calc(33.33% - 13px);
+        }
+
+        .payButton {
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 30px;
+            font-weight: bold;
+            display: block;
+            width: 100%;
+            box-shadow: 0 6px 20px rgba(26, 58, 143, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .payButton::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-hover);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+
+        .payButton:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(26, 58, 143, 0.4);
+        }
+
+        .payButton:hover::before {
+            left: 0;
+        }
+
+        .close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+            transition: var(--transition);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(224, 232, 255, 0.5);
+        }
+
+        .close:hover {
+            color: var(--primary-blue);
+            background: var(--light-gray);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(320px, auto);
+            gap: 25px;
+            padding: 60px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .galleryItem {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .galleryItem.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .galleryItem:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 28, 77, 0.3);
+        }
+
+        .galleryImg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .galleryItem:hover .galleryImg {
+            transform: scale(1.1);
+        }
+
+        .galleryTitle {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(transparent, rgba(10, 28, 77, 0.85));
+            color: var(--white);
+            font-size: 1.7rem;
+            text-align: center;
+            z-index: 2;
+            transform: translateY(100%);
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .galleryItem:hover .galleryTitle {
+            transform: translateY(0);
+        }
+
+        .nsItem {
+            background: var(--gradient);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+            border-radius: 20px;
+            color: var(--white);
+            grid-column: span 2;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nsItem::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+            z-index: 1;
+        }
+
+        .nsTitleSm {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+        }
+
+        .nsTitle {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            position: relative;
+            z-index: 2;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+        }
+
+        .nsTitle span {
+            color: var(--accent-yellow);
+        }
+
+        .nsButton {
+            background: var(--white);
+            color: var(--primary-blue);
+            border: none;
+            padding: 15px 45px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .nsButton::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-hover);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+
+        .nsButton:hover {
+            color: var(--white);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .nsButton:hover::before {
+            left: 0;
+        }
+
+        .nsImg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: var(--dark-blue);
+            color: var(--light-gray);
+            padding: 80px 5% 40px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--light-blue) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+
+        .footerLeft {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footerMenu {
+            min-width: 220px;
+            margin: 0 20px 40px;
+        }
+
+        .fMenuTitle {
+            font-size: 1.7rem;
+            margin-bottom: 25px;
+            color: var(--white);
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--light-blue);
+            display: inline-block;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .fList {
+            list-style: none;
+        }
+
+        .fListItem {
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .fListItem:before {
+            content: '•';
+            color: var(--light-blue);
+            margin-right: 12px;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+       
+        .fListItem:hover {
+            color: var(--light-blue);
+            padding-left: 8px;
+        }
+
+        .fListItem:hover:before {
+            color: var(--accent-yellow);
+        }
+
+        .footerRight {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .fInput {
+            width: 100%;
+            max-width: 450px;
+            padding: 16px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+
+        .fInput::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .fInput:focus {
+            background: rgba(255, 255, 255, 0.15);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 123, 255, 0.3);
+        }
+
+        .fButton {
+            background: var(--light-blue);
+            color: var(--white);
+            border: none;
+            padding: 16px 45px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .fButton::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-hover);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+
+        .fButton:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .fButton:hover::before {
+            left: 0;
+        }
+
+        .fIcons {
+            display: flex;
+            gap: 25px;
+            margin: 35px 0;
+        }
+
+        .fIcon {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-size: 1.4rem;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .fIcon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .fIcon:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .fIcon:hover::before {
+            opacity: 1;
+        }
+
+        .copyright {
+            font-size: 1rem;
+            color: var(--medium-gray);
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            z-index: 99;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        #scrollToTopBtn.show {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #scrollToTopBtn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            background: var(--gradient-hover);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .sliderTitle {
+                font-size: 3.2rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .nsItem {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .navBottom {
+                flex-wrap: wrap;
+            }
+            
+            .productDetails {
+                flex-direction: column;
+            }
+            
+            .productDetails:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .productDetailImg, .productDetailInfo {
+                width: 100%;
+            }
+            
+            .productDetailImg {
+                height: 350px;
+                border-right: none;
+                border-bottom: 3px solid var(--light-blue);
+            }
+            
+            .feature {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navTop {
+                flex-direction: column;
+                padding: 15px;
+                gap: 15px;
+            }
+            
+            .navItem {
+                margin: 10px 0;
+            }
+            
+            .slider {
+                height: 60vh;
+            }
+            
+            .sliderTitle {
+                font-size: 2.3rem;
+            }
+            
+            .sliderPrice {
+                font-size: 2rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                padding: 40px 5%;
+            }
+            
+            .feature {
+                width: 100%;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .footerMenu {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .menuItem {
+                font-size: 14px;
+                margin: 0 10px;
+            }
+            
+            .searchInput {
+                width: 130px;
+            }
+            
+            .sliderTitle {
+                font-size: 1.8rem;
+            }
+            
+            .sliderPrice {
+                font-size: 1.6rem;
+            }
+            
+            .buyButton {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+            }
+            
+            .footerLeft {
+                flex-direction: column;
+            }
+            
+            .cardInfo {
+                flex-direction: column;
+            }
+            
+            .payInput.sm {
+                width: 100%;
+            }
+
+            .productDetailTitle {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-
-<body id="top">
-
-  <!-- 
-    - #PRELOADER
-  -->
-
-  <div class="preload" data-preaload>
-    <div class="circle"></div>
-    <p class="text">Grilli</p>
-  </div>
-
-
-
-
-
-  <!-- 
-    - #TOP BAR
-  -->
-
-  <div class="topbar">
-    <div class="container">
-
-      <address class="topbar-item">
-        <div class="icon">
-          <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+<body>
+    <nav id="nav">
+        <div class="navTop">
+            <div class="navItem">
+                <div class="logo-container">
+                    <img src="./img/contact/logo.png" alt="Berry Blast & Blitz logo">
+                    <div class="logo-text">BERRY<span>BLAST</span></div>
+                </div>
+            </div>
+            <div class="navItem">
+                <div class="search">
+                    <input type="text" placeholder="Search products..." class="searchInput">
+                    <i class="fas fa-search searchIcon"></i>
+                </div>
+            </div>
+            <div class="navItem">
+                <span class="limitedOffer" onclick="location.href='admin.php';"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</span>
+            </div>
         </div>
-
-        <span class="span">
-          Restaurant St, Delicious City, London 9578, UK
-        </span>
-      </address>
-
-      <div class="separator"></div>
-
-      <div class="topbar-item item-2">
-        <div class="icon">
-          <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+        <div class="navBottom">
+            <h3 class="menuItem" data-target="product-boba-ice-cream">BOBA ICE CREAM</h3>
+            <h3 class="menuItem" data-target="product-boba-passion-fruit-juice">BOBA PASSION FRUIT JUICE</h3>
+            <h3 class="menuItem" data-target="product-boba-chocolate-ice-cream">BOBA + CHOCOLATE ICE CREAM</h3>
+            <h3 class="menuItem" data-target="product-lemonade-juice">LEMONADE JUICE</h3>
+            <h3 class="menuItem" data-target="product-mango-kiwi-ice-cream">MANGO + KIWI ICE CREAM</h3>
         </div>
+    </nav>
 
-        <span class="span">Daily : 8.00 am to 10.00 pm</span>
-      </div>
-
-      <a href="tel:+11234567890" class="topbar-item link">
-        <div class="icon">
-          <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+    <div class="slider">
+        <div class="sliderWrapper">
+            <div class="sliderItem active">
+                <img src="./img/product/Boba ice cream.png" alt="Boba ice cream" class="sliderImg">
+                <div class="sliderBg"></div>
+                <div class="sliderContent">
+                    <h1 class="sliderTitle">BOBA <span>ICE CREAM</span><br>NEW FLAVOUR</h1>
+                    <h2 class="sliderPrice">RM6</h2>
+                    <a href="#product">
+                        <button class="buyButton">BUY NOW!</button>
+                    </a>
+                </div>
+            </div>
+            <div class="sliderItem">
+                <img src="./img/product/Boba Passion Fruit Juice.png" alt="Boba passion fruit juice" class="sliderImg">
+                <div class="sliderBg"></div>
+                <div class="sliderContent">
+                    <h1 class="sliderTitle">BOBA <span>PASSION FRUIT</span><br>JUICE</h1>
+                    <h2 class="sliderPrice">RM5</h2>
+                    <a href="#product">
+                        <button class="buyButton">BUY NOW!</button>
+                    </a>
+                </div>
+            </div>
+            <div class="sliderItem">
+                <img src="./img/product/Boba + Chocolate Ice Cream.png" alt="Boba + chocolate ice cream" class="sliderImg">
+                <div class="sliderBg"></div>
+                <div class="sliderContent">
+                    <h1 class="sliderTitle">BOBA + <span>CHOCOLATE</span><br>ICE CREAM</h1>
+                    <h2 class="sliderPrice">RM9.99</h2>
+                    <a href="#product">
+                        <button class="buyButton">BUY NOW!</button>
+                    </a>
+                </div>
+            </div>
+            <div class="sliderItem">
+                <img src="./img/Product/Lemonade Juice.png" alt="Lemonade juice" class="sliderImg">
+                <div class="sliderBg"></div>
+                <div class="sliderContent">
+                    <h1 class="sliderTitle"><span>LEMONADE</span> JUICE<br>REFRESHING TASTE</h1>
+                    <h2 class="sliderPrice">RM4.50</h2>
+                    <a href="#product">
+                        <button class="buyButton">BUY NOW!</button>
+                    </a>
+                </div>
+            </div>
+            <div class="sliderItem">
+                <img src="./img/Product/Mango + Kiwi Ice Cream.png" alt="Mango + kiwi ice cream" class="sliderImg">
+                <div class="sliderBg"></div>
+                <div class="sliderContent">
+                    <h1 class="sliderTitle">MANGO + <span>KIWI</span><br>ICE CREAM</h1>
+                    <h2 class="sliderPrice">RM6.66</h2>
+                    <a href="#product">
+                        <button class="buyButton">BUY NOW!</button>
+                    </a>
+                </div>
+            </div>
         </div>
-
-        <span class="span">+1 123 456 7890</span>
-      </a>
-
-      <div class="separator"></div>
-
-      <a href="mailto:booking@restaurant.com" class="topbar-item link">
-        <div class="icon">
-          <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+        <div class="sliderNav">
+            <div class="sliderDot active"></div>
+            <div class="sliderDot"></div>
+            <div class="sliderDot"></div>
+            <div class="sliderDot"></div>
+            <div class="sliderDot"></div>
         </div>
-
-        <span class="span">booking@restaurant.com</span>
-      </a>
-
     </div>
-  </div>
-
-
-
-
-
-  <!-- 
-    - #HEADER
-  -->
-
-  <header class="header" data-header>
-    <div class="container">
-
-      <a href="#" class="logo">
-        <img src="./assets/images/logo.svg" width="160" height="50" alt="Grilli - Home">
-      </a>
-
-      <nav class="navbar" data-navbar>
-
-        <button class="close-btn" aria-label="close menu" data-nav-toggler>
-          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-        </button>
-
-        <a href="#" class="logo">
-          <img src="./assets/images/logo.svg" width="160" height="50" alt="Grilli - Home">
-        </a>
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <a href="#home" class="navbar-link hover-underline active">
-              <div class="separator"></div>
-
-              <span class="span">Home</span>
-            </a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#menu" class="navbar-link hover-underline">
-              <div class="separator"></div>
-
-              <span class="span">Menus</span>
-            </a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#about" class="navbar-link hover-underline">
-              <div class="separator"></div>
-
-              <span class="span">About Us</span>
-            </a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#" class="navbar-link hover-underline">
-              <div class="separator"></div>
-
-              <span class="span">Our Chefs</span>
-            </a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#" class="navbar-link hover-underline">
-              <div class="separator"></div>
-
-              <span class="span">Contact</span>
-            </a>
-          </li>
-
-        </ul>
-
-        <div class="text-center">
-          <p class="headline-1 navbar-title">Visit Us</p>
-
-          <address class="body-4">
-            Restaurant St, Delicious City, <br>
-            London 9578, UK
-          </address>
-
-          <p class="body-4 navbar-text">Open: 9.30 am - 2.30pm</p>
-
-          <a href="mailto:booking@grilli.com" class="body-4 sidebar-link">booking@grilli.com</a>
-
-          <div class="separator"></div>
-
-          <p class="contact-label">Booking Request</p>
-
-          <a href="tel:+88123123456" class="body-1 contact-number hover-underline">
-            +88-123-123456
-          </a>
+   
+    <div class="features">
+        <div class="feature">
+            <img src="https://th.bing.com/th/id/R.93f31d069567d92287a217aa607d39a2?rik=F%2ftEE4eBrxOoag&riu=http%3a%2f%2fpluspng.com%2fimg-png%2ffree-shipping-png-free-shipping-icon-1600.png&ehk=kPdnOmIwc3o91rZ6p8fnz%2frQGzTAGS7xjUBk0MGZa5M%3d&risl=&pid=ImgRaw&r=0" alt="Free shipping" class="featureIcon">
+            <span class="featureTitle">FREE SHIPPING</span>
+            <span class="featureDesc">Enjoy free standard shipping on every order—no minimum purchase required!</span>✔ No hidden fees✔ Fast, reliable delivery✔ Track your package every step of the way
+</span>
         </div>
-
-      </nav>
-
-      <a href="#" class="btn btn-secondary">
-        <span class="text text-1">Find A Table</span>
-
-        <span class="text text-2" aria-hidden="true">Find A Table</span>
-      </a>
-
-      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
-        <span class="line line-1"></span>
-        <span class="line line-2"></span>
-        <span class="line line-3"></span>
-      </button>
-
-      <div class="overlay" data-nav-toggler data-overlay></div>
-
+        <div class="feature">
+            <img class="featureIcon" src="https://cdn-icons-png.flaticon.com/512/1405/1405276.png" alt="Voucher">
+            <span class="featureTitle">FREE ONE VANILLA ICE CREAM CONE VOUCHER</span>
+            <span class="featureDesc">On Your Next Purchase on any purchase amount above RM 5.</span>
+        </div>
+        <div class="feature">
+            <img class="featureIcon" src="https://static.vecteezy.com/system/resources/previews/021/048/581/original/contact-message-gradient-icon-free-png.png" alt="Contact us">
+            <span class="featureTitle">CONTACT US!</span>
+            <span class="featureDesc">Need quick help? You can reach us through email or phone. We aim to respond to all inquiries within 24 hours.</span>
+        </div> 
     </div>
-  </header>
-
-
-
-
-
-  <main>
-    <article>
-
-      <!-- 
-        - #HERO
-      -->
-
-      <section class="hero text-center" aria-label="home" id="home">
-
-        <ul class="hero-slider" data-hero-slider>
-
-          <li class="slider-item active" data-hero-slider-item>
-
-            <div class="slider-bg">
-              <img src="./assets/images/hero-slider-1.jpg" width="1880" height="950" alt="" class="img-cover">
+    
+    <h2 class="section-title">Our Signature Products\(￣▽￣)/ </h2>
+    <div class="product" id="product">
+        <div class="productDetails active" id="product-boba-ice-cream">
+            <img src="./img/Product/Boba ice cream.png" alt="Boba ice cream" class="productDetailImg">
+            <div class="productDetailInfo">
+                <h2 class="productDetailTitle">BOBA <span>ICE CREAM</span></h2>
+                <p class="productDetailDesc">A creamy ice cream bar featuring chewy brown sugar boba pearls, served on a white plate for a fresh and inviting treat. Perfect for boba lovers seeking a cool dessert experience that combines traditional flavors with modern presentation.</p>
+                <span class="productDetailPrice">RM6</span>
+                <button class="productDetailButton">BUY NOW!</button>
             </div>
-
-            <p class="label-2 section-subtitle slider-reveal">Tradational & Hygine</p>
-
-            <h1 class="display-1 hero-title slider-reveal">
-              For the love of <br>
-              delicious food
-            </h1>
-
-            <p class="body-2 hero-text slider-reveal">
-              Come with family & feel the joy of mouthwatering food
-            </p>
-
-            <a href="#" class="btn btn-primary slider-reveal">
-              <span class="text text-1">View Our Menu</span>
-
-              <span class="text text-2" aria-hidden="true">View Our Menu</span>
-            </a>
-
-          </li>
-
-          <li class="slider-item" data-hero-slider-item>
-
-            <div class="slider-bg">
-              <img src="./assets/images/hero-slider-2.jpg" width="1880" height="950" alt="" class="img-cover">
+        </div>
+        <div class="productDetails" id="product-boba-passion-fruit-juice">
+            <img src="./img/Product/Boba Passion Fruit Juice.png" alt="Boba passion fruit juice" class="productDetailImg">
+            <div class="productDetailInfo">
+                <h2 class="productDetailTitle">BOBA <span>PASSION FRUIT JUICE</span></h2>
+                <p class="productDetailDesc">A refreshing passion fruit juice with chewy boba pearls and white jelly cubes, served in a large cup. This tropical delight is perfect for a cool, fruity treat on a hot day, offering a perfect balance of sweetness and tartness.</p>
+                <span class="productDetailPrice">RM5</span>
+                <button class="productDetailButton">BUY NOW!</button>
             </div>
-
-            <p class="label-2 section-subtitle slider-reveal">delightful experience</p>
-
-            <h1 class="display-1 hero-title slider-reveal">
-              Flavors Inspired by <br>
-              the Seasons
-            </h1>
-
-            <p class="body-2 hero-text slider-reveal">
-              Come with family & feel the joy of mouthwatering food
-            </p>
-
-            <a href="#" class="btn btn-primary slider-reveal">
-              <span class="text text-1">View Our Menu</span>
-
-              <span class="text text-2" aria-hidden="true">View Our Menu</span>
-            </a>
-
-          </li>
-
-          <li class="slider-item" data-hero-slider-item>
-
-            <div class="slider-bg">
-              <img src="./assets/images/hero-slider-3.jpg" width="1880" height="950" alt="" class="img-cover">
+        </div>
+        <div class="productDetails" id="product-boba-chocolate-ice-cream">
+            <img src="./img/Product/Boba + Chocolate Ice Cream.png" alt="Boba + chocolate ice cream" class="productDetailImg">
+            <div class="productDetailInfo">
+            <h2 class="productDetailTitle">BOBA + <span>CHOCOLATE ICE CREAM</span></h2>
+            <p class="productDetailDesc">Indulge in our premium chocolate ice cream bar generously studded with boba pearls. Partially unwrapped to reveal its delicious contents, this treat rests on a pristine white plate, creating an appetizing and cheerful mood for chocolate lovers.</p>
+            <span class="productDetailPrice">RM9.99</span>
+            <button class="productDetailButton">BUY NOW!</button>
             </div>
-
-            <p class="label-2 section-subtitle slider-reveal">amazing & delicious</p>
-
-            <h1 class="display-1 hero-title slider-reveal">
-              Where every flavor <br>
-              tells a story
-            </h1>
-
-            <p class="body-2 hero-text slider-reveal">
-              Come with family & feel the joy of mouthwatering food
-            </p>
-
-            <a href="#" class="btn btn-primary slider-reveal">
-              <span class="text text-1">View Our Menu</span>
-
-              <span class="text text-2" aria-hidden="true">View Our Menu</span>
-            </a>
-
-          </li>
-
-        </ul>
-
-        <button class="slider-btn prev" aria-label="slide to previous" data-prev-btn>
-          <ion-icon name="chevron-back"></ion-icon>
-        </button>
-
-        <button class="slider-btn next" aria-label="slide to next" data-next-btn>
-          <ion-icon name="chevron-forward"></ion-icon>
-        </button>
-
-        <a href="#" class="hero-btn has-after">
-          <img src="./assets/images/hero-icon.png" width="48" height="48" alt="booking icon">
-
-          <span class="label-2 text-center span">Book A Table</span>
-        </a>
-
-      </section>
-
-
-
-
-
-      <!-- 
-        - #SERVICE
-      -->
-
-      <section class="section service bg-black-10 text-center" aria-label="service">
-        <div class="container">
-
-          <p class="section-subtitle label-2">Flavors For Royalty</p>
-
-          <h2 class="headline-1 section-title">We Offer Top Notch</h2>
-
-          <p class="section-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the industrys
-            standard dummy text ever.
-          </p>
-
-          <ul class="grid-list">
-
-            <li>
-              <div class="service-card">
-
-                <a href="#" class="has-before hover:shine">
-                  <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="./assets/images/service-1.jpg" width="285" height="336" loading="lazy" alt="Breakfast"
-                      class="img-cover">
-                  </figure>
-                </a>
-
-                <div class="card-content">
-
-                  <h3 class="title-4 card-title">
-                    <a href="#">Breakfast</a>
-                  </h3>
-
-                  <a href="#" class="btn-text hover-underline label-2">View Menu</a>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <a href="#" class="has-before hover:shine">
-                  <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="./assets/images/service-2.jpg" width="285" height="336" loading="lazy" alt="Appetizers"
-                      class="img-cover">
-                  </figure>
-                </a>
-
-                <div class="card-content">
-
-                  <h3 class="title-4 card-title">
-                    <a href="#">Appetizers</a>
-                  </h3>
-
-                  <a href="#" class="btn-text hover-underline label-2">View Menu</a>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <a href="#" class="has-before hover:shine">
-                  <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="./assets/images/service-3.jpg" width="285" height="336" loading="lazy" alt="Drinks"
-                      class="img-cover">
-                  </figure>
-                </a>
-
-                <div class="card-content">
-
-                  <h3 class="title-4 card-title">
-                    <a href="#">Drinks</a>
-                  </h3>
-
-                  <a href="#" class="btn-text hover-underline label-2">View Menu</a>
-
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <img src="./assets/images/shape-1.png" width="246" height="412" loading="lazy" alt="shape"
-            class="shape shape-1 move-anim">
-          <img src="./assets/images/shape-2.png" width="343" height="345" loading="lazy" alt="shape"
-            class="shape shape-2 move-anim">
-
         </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #ABOUT
-      -->
-
-      <section class="section about text-center" aria-labelledby="about-label" id="about">
-        <div class="container">
-
-          <div class="about-content">
-
-            <p class="label-2 section-subtitle" id="about-label">Our Story</p>
-
-            <h2 class="headline-1 section-title">Every Fla vor Tells a Story</h2>
-
-            <p class="section-text">
-              Lorem Ipsum is simply dummy text of the printingand typesetting industry lorem Ipsum has been the
-              industrys standard dummy text ever since the when an unknown printer took a galley of type and scrambled
-              it to make a type specimen book It has survived not only five centuries, but also the leap into.
-            </p>
-
-            <div class="contact-label">Book Through Call</div>
-
-            <a href="tel:+804001234567" class="body-1 contact-number hover-underline">+80 (400) 123 4567</a>
-
-            <a href="#" class="btn btn-primary">
-              <span class="text text-1">Read More</span>
-
-              <span class="text text-2" aria-hidden="true">Read More</span>
-            </a>
-
-          </div>
-
-          <figure class="about-banner">
-
-            <img src="./assets/images/about-banner.jpg" width="570" height="570" loading="lazy" alt="about banner"
-              class="w-100" data-parallax-item data-parallax-speed="1">
-
-            <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
-              <img src="./assets/images/about-abs-image.jpg" width="285" height="285" loading="lazy" alt=""
-                class="w-100">
+        <div class="productDetails" id="product-lemonade-juice">
+            <img src="./img/Product/Lemonade Juice.png" alt="Lemonade juice" class="productDetailImg">
+            <div class="productDetailInfo">
+            <h2 class="productDetailTitle"><span>LEMONADE</span> JUICE</h2>
+            <p class="productDetailDesc">A zesty and refreshing lemonade juice, served chilled with slices of fresh lemon and ice cubes. Perfect for a hot day, this beverage delivers a burst of citrus flavor that revitalizes your senses and quenches your thirst like nothing else.</p>
+            <span class="productDetailPrice">RM4.50</span>
+            <button class="productDetailButton">BUY NOW!</button>
             </div>
-
-            <div class="abs-img abs-img-2 has-before">
-              <img src="./assets/images/badge-2.png" width="133" height="134" loading="lazy" alt="">
+        </div>
+        <div class="productDetails" id="product-mango-kiwi-ice-cream">
+            <img src="./img/Product/Mango + Kiwi Ice Cream.png" alt="Mango + kiwi ice cream" class="productDetailImg">
+            <div class="productDetailInfo">
+            <h2 class="productDetailTitle">MANGO + <span>KIWI ICE CREAM</span></h2>
+            <p class="productDetailDesc">A tropical delight combining creamy mango and tangy kiwi ice cream, topped with fresh fruit pieces. This colorful and exotic treat is specially crafted for fruit lovers seeking a refreshing escape to paradise with every spoonful.</p>
+            <span class="productDetailPrice">RM6.66</span>
+            <button class="productDetailButton">BUY NOW!</button>
             </div>
-
-          </figure>
-
-          <img src="./assets/images/shape-3.png" width="197" height="194" loading="lazy" alt="" class="shape">
-
         </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #SPECIAL DISH
-      -->
-
-      <section class="special-dish text-center" aria-labelledby="dish-label">
-
-        <div class="special-dish-banner">
-          <img src="./assets/images/special-dish-banner.jpg" width="940" height="900" loading="lazy" alt="special dish"
-            class="img-cover">
-        </div>
-
-        <div class="special-dish-content bg-black-10">
-          <div class="container">
-
-            <img src="./assets/images/badge-1.png" width="28" height="41" loading="lazy" alt="badge" class="abs-img">
-
-            <p class="section-subtitle label-2">Special Dish</p>
-
-            <h2 class="headline-1 section-title">Lobster Tortellini</h2>
-
-            <p class="section-text">
-              Lorem Ipsum is simply dummy text of the printingand typesetting industry lorem Ipsum has been the
-              industrys standard dummy text ever since the when an unknown printer took a galley of type.
-            </p>
-
-            <div class="wrapper">
-              <del class="del body-3">$40.00</del>
-
-              <span class="span body-1">$20.00</span>
-            </div>
-
-            <a href="#" class="btn btn-primary">
-              <span class="text text-1">View All Menu</span>
-
-              <span class="text text-2" aria-hidden="true">View All Menu</span>
-            </a>
-
-          </div>
-        </div>
-
-        <img src="./assets/images/shape-4.png" width="179" height="359" loading="lazy" alt="" class="shape shape-1">
-
-        <img src="./assets/images/shape-9.png" width="351" height="462" loading="lazy" alt="" class="shape shape-2">
-
-      </section>
-
-
-
-
-
-      <!-- 
-        - #MENU
-      -->
-
-      <section class="section menu" aria-label="menu-label" id="menu">
-        <div class="container">
-
-          <p class="section-subtitle text-center label-2">Special Selection</p>
-
-          <h2 class="headline-1 section-title text-center">Delicious Menu</h2>
-
-          <ul class="grid-list">
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="./assets/images/menu-1.png" width="100" height="100" loading="lazy" alt="Greek Salad"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Greek Salad</a>
-                    </h3>
-
-                    <span class="badge label-1">Seasonal</span>
-
-                    <span class="span title-2">$25.50</span>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Tomatoes, green bell pepper, sliced cucumber onion, olives, and feta cheese.
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="./assets/images/menu-2.png" width="100" height="100" loading="lazy" alt="Lasagne"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Lasagne</a>
-                    </h3>
-
-                    <span class="span title-2">$40.00</span>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Vegetables, cheeses, ground meats, tomato sauce, seasonings and spices
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="./assets/images/menu-3.png" width="100" height="100" loading="lazy" alt="Butternut Pumpkin"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Butternut Pumpkin</a>
-                    </h3>
-
-                    <span class="span title-2">$10.00</span>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Typesetting industry lorem Lorem Ipsum is simply dummy text of the priand.
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="./assets/images/menu-4.png" width="100" height="100" loading="lazy" alt="Tokusen Wagyu"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Tokusen Wagyu</a>
-                    </h3>
-
-                    <span class="badge label-1">New</span>
-
-                    <span class="span title-2">$39.00</span>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Vegetables, cheeses, ground meats, tomato sauce, seasonings and spices.
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="./assets/images/menu-5.png" width="100" height="100" loading="lazy" alt="Olivas Rellenas"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Olivas Rellenas</a>
-                    </h3>
-
-                    <span class="span title-2">$25.00</span>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Avocados with crab meat, red onion, crab salad stuffed red bell pepper and green bell pepper.
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="menu-card hover:card">
-
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                  <img src="./assets/images/menu-6.png" width="100" height="100" loading="lazy" alt="Opu Fish"
-                    class="img-cover">
-                </figure>
-
-                <div>
-
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">Opu Fish</a>
-                    </h3>
-
-                    <span class="span title-2">$49.00</span>
-                  </div>
-
-                  <p class="card-text label-1">
-                    Vegetables, cheeses, ground meats, tomato sauce, seasonings and spices
-                  </p>
-
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <p class="menu-text text-center">
-            During winter daily from <span class="span">7:00 pm</span> to <span class="span">9:00 pm</span>
-          </p>
-
-          <a href="#" class="btn btn-primary">
-            <span class="text text-1">View All Menu</span>
-
-            <span class="text text-2" aria-hidden="true">View All Menu</span>
-          </a>
-
-          <img src="./assets/images/shape-5.png" width="921" height="1036" loading="lazy" alt="shape"
-            class="shape shape-2 move-anim">
-          <img src="./assets/images/shape-6.png" width="343" height="345" loading="lazy" alt="shape"
-            class="shape shape-3 move-anim">
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #TESTIMONIALS
-      -->
-
-      <section class="section testi text-center has-bg-image"
-        style="background-image: url('./assets/images/testimonial-bg.jpg')" aria-label="testimonials">
-        <div class="container">
-
-          <div class="quote">”</div>
-
-          <p class="headline-2 testi-text">
-            I wanted to thank you for inviting me down for that amazing dinner the other night. The food was
-            extraordinary.
-          </p>
-
-          <div class="wrapper">
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-          </div>
-
-          <div class="profile">
-            <img src="./assets/images/testi-avatar.jpg" width="100" height="100" loading="lazy" alt="Sam Jhonson"
-              class="img">
-
-            <p class="label-2 profile-name">Sam Jhonson</p>
-          </div>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #RESERVATION
-      -->
-
-      <section class="reservation">
-        <div class="container">
-
-          <div class="form reservation-form bg-black-10">
-
-            <form action="" class="form-left">
-
-              <h2 class="headline-1 text-center">Online Reservation</h2>
-
-              <p class="form-text text-center">
-                Booking request <a href="tel:+88123123456" class="link">+88-123-123456</a>
-                or fill out the order form
-              </p>
-
-              <div class="input-wrapper">
-                <input type="text" name="name" placeholder="Your Name" autocomplete="off" class="input-field">
-
-                <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field">
-              </div>
-
-              <div class="input-wrapper">
-
-                <div class="icon-wrapper">
-                  <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-
-                  <select name="person" class="input-field">
-                    <option value="1-person">1 Person</option>
-                    <option value="2-person">2 Person</option>
-                    <option value="3-person">3 Person</option>
-                    <option value="4-person">4 Person</option>
-                    <option value="5-person">5 Person</option>
-                    <option value="6-person">6 Person</option>
-                    <option value="7-person">7 Person</option>
-                  </select>
-
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
-
-                <div class="icon-wrapper">
-                  <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
-
-                  <input type="date" name="reservation-date" class="input-field">
-
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
-
-                <div class="icon-wrapper">
-                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                  <select name="person" class="input-field">
-                    <option value="08:00am">08 : 00 am</option>
-                    <option value="09:00am">09 : 00 am</option>
-                    <option value="010:00am">10 : 00 am</option>
-                    <option value="011:00am">11 : 00 am</option>
-                    <option value="012:00am">12 : 00 am</option>
-                    <option value="01:00pm">01 : 00 pm</option>
-                    <option value="02:00pm">02 : 00 pm</option>
-                    <option value="03:00pm">03 : 00 pm</option>
-                    <option value="04:00pm">04 : 00 pm</option>
-                    <option value="05:00pm">05 : 00 pm</option>
-                    <option value="06:00pm">06 : 00 pm</option>
-                    <option value="07:00pm">07 : 00 pm</option>
-                    <option value="08:00pm">08 : 00 pm</option>
-                    <option value="09:00pm">09 : 00 pm</option>
-                    <option value="10:00pm">10 : 00 pm</option>
-                  </select>
-
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
-
-              </div>
-
-              <textarea name="message" placeholder="Message" autocomplete="off" class="input-field"></textarea>
-
-              <button type="submit" class="btn btn-secondary">
-                <span class="text text-1">Book A Table</span>
-
-                <span class="text text-2" aria-hidden="true">Book A Table</span>
-              </button>
-
-            </form>
-
-            <div class="form-right text-center" style="background-image: url('./assets/images/form-pattern.png')">
-
-              <h2 class="headline-1 text-center">Contact Us</h2>
-
-              <p class="contact-label">Booking Request</p>
-
-              <a href="tel:+88123123456" class="body-1 contact-number hover-underline">+88-123-123456</a>
-
-              <div class="separator"></div>
-
-              <p class="contact-label">Location</p>
-
-              <address class="body-4">
-                Restaurant St, Delicious City, <br>
-                London 9578, UK
-              </address>
-
-              <p class="contact-label">Lunch Time</p>
-
-              <p class="body-4">
-                Monday to Sunday <br>
-                11.00 am - 2.30pm
-              </p>
-
-              <p class="contact-label">Dinner Time</p>
-
-              <p class="body-4">
-                Monday to Sunday <br>
-                05.00 pm - 10.00pm
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #FEATURES
-      -->
-
-      <section class="section features text-center" aria-label="features">
-        <div class="container">
-
-          <p class="section-subtitle label-2">Why Choose Us</p>
-
-          <h2 class="headline-1 section-title">Our Strength</h2>
-
-          <ul class="grid-list">
-
-            <li class="feature-item">
-              <div class="feature-card">
-
-                <div class="card-icon">
-                  <img src="./assets/images/features-icon-1.png" width="100" height="80" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="title-2 card-title">Hygienic Food</h3>
-
-                <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-              </div>
-            </li>
-
-            <li class="feature-item">
-              <div class="feature-card">
-
-                <div class="card-icon">
-                  <img src="./assets/images/features-icon-2.png" width="100" height="80" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="title-2 card-title">Fresh Environment</h3>
-
-                <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-              </div>
-            </li>
-
-            <li class="feature-item">
-              <div class="feature-card">
-
-                <div class="card-icon">
-                  <img src="./assets/images/features-icon-3.png" width="100" height="80" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="title-2 card-title">Skilled Chefs</h3>
-
-                <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-              </div>
-            </li>
-
-            <li class="feature-item">
-              <div class="feature-card">
-
-                <div class="card-icon">
-                  <img src="./assets/images/features-icon-4.png" width="100" height="80" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="title-2 card-title">Event & Party</h3>
-
-                <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <img src="./assets/images/shape-7.png" width="208" height="178" loading="lazy" alt="shape"
-            class="shape shape-1">
-
-          <img src="./assets/images/shape-8.png" width="120" height="115" loading="lazy" alt="shape"
-            class="shape shape-2">
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #EVENT
-      -->
-
-      <section class="section event bg-black-10" aria-label="event">
-        <div class="container">
-
-          <p class="section-subtitle label-2 text-center">Recent Updates</p>
-
-          <h2 class="section-title headline-1 text-center">Upcoming Event</h2>
-
-          <ul class="grid-list">
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="./assets/images/event-1.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                  <time class="publish-date label-2" datetime="2022-09-15">15/09/2022</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Food, Flavour</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="./assets/images/event-2.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                  <time class="publish-date label-2" datetime="2022-09-08">08/09/2022</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Healthy Food</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="./assets/images/event-3.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                  <time class="publish-date label-2" datetime="2022-09-03">03/09/2022</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Recipie</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <a href="#" class="btn btn-primary">
-            <span class="text text-1">View Our Blog</span>
-
-            <span class="text text-2" aria-hidden="true">View Our Blog</span>
-          </a>
-
-        </div>
-      </section>
-
-    </article>
-  </main>
-
-
-
-
-
-  <!-- 
-    - #FOOTER
-  -->
-
-  <footer class="footer section has-bg-image text-center"
-    style="background-image: url('./assets/images/footer-bg.jpg')">
-    <div class="container">
-
-      <div class="footer-top grid-list">
-
-        <div class="footer-brand has-before has-after">
-
-          <a href="#" class="logo">
-            <img src="./assets/images/logo.svg" width="160" height="50" loading="lazy" alt="grilli home">
-          </a>
-
-          <address class="body-4">
-            Restaurant St, Delicious City, London 9578, UK
-          </address>
-
-          <a href="mailto:booking@grilli.com" class="body-4 contact-link">booking@grilli.com</a>
-
-          <a href="tel:+88123123456" class="body-4 contact-link">Booking Request : +88-123-123456</a>
-
-          <p class="body-4">
-            Open : 09:00 am - 01:00 pm
-          </p>
-
-          <div class="wrapper">
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-          </div>
-
-          <p class="title-1">Get News & Offers</p>
-
-          <p class="label-1">
-            Subscribe us & Get <span class="span">25% Off.</span>
-          </p>
-
-          <form action="" class="input-wrapper">
-            <div class="icon-wrapper">
-              <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
-
-              <input type="email" name="email_address" placeholder="Your email" autocomplete="off" class="input-field">
-            </div>
-
-            <button type="submit" class="btn btn-secondary">
-              <span class="text text-1">Subscribe</span>
-
-              <span class="text text-2" aria-hidden="true">Subscribe</span>
-            </button>
-          </form>
-
-        </div>
-
-        <ul class="footer-list">
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Home</a>
-          </li>
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Menus</a>
-          </li>
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">About Us</a>
-          </li>
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Our Chefs</a>
-          </li>
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Contact</a>
-          </li>
-
-        </ul>
-
-        <ul class="footer-list">
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Facebook</a>
-          </li>
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Instagram</a>
-          </li>
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Twitter</a>
-          </li>
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Youtube</a>
-          </li>
-
-          <li>
-            <a href="#" class="label-2 footer-link hover-underline">Google Map</a>
-          </li>
-
-        </ul>
-
-      </div>
-
-      <div class="footer-bottom">
-
-        <p class="copyright">
-          &copy; 2022 Grilli. All Rights Reserved | Crafted by <a href="https://github.com/codewithsadee"
-            target="_blank" class="link">codewithsadee</a>
-        </p>
-
-      </div>
-
     </div>
-  </footer>
+        
+    <div class="payment">
+        <h1 class="payTitle">Personal Information</h1>
+        <form action="data.php" method="POST">
+            <label for="name">Name and Surname</label>
+            <input type="text" id="name" name="name" placeholder="Vincent" class="payInput" required>
+            <br>
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" placeholder="+6012 345 9876" class="payInput" maxlength="13" required>
+            <br>
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" placeholder="321 Main Street, Kuala Lumpur" class="payInput" required>
+            <br>
+            <h1 class="payTitle">Card Information</h1>
+            <div class="cardIcons">
+                <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" width="50" alt="Visa" class="cardIcon">
+                <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="Mastercard" width="50" class="cardIcon">
+                <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" alt="American Express" width="50" class="cardIcon">
+            </div>
+            <label for="card_number">Card Number</label>
+            <input type="text" id="card_number" name="card_number" class="payInput" placeholder="Card Number" maxlength="16" required>
+            <div class="cardInfo">
+                <div>
+                    <label for="expiry_month">Expiry Month</label>
+                    <input type="text" id="expiry_month" name="expiry_month" placeholder="MM" class="payInput sm" maxlength="2" required>
+                </div>
+                <div>
+                    <label for="expiry_year">Expiry Year</label>
+                    <input type="text" id="expiry_year" name="expiry_year" placeholder="YYYY" class="payInput sm" maxlength="4" required>
+                </div>
+                <div>
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="CVV" class="payInput sm" maxlength="3" required>
+                </div>
+            </div>
+            <button type="submit" class="payButton">Checkout Now</button>
+            <span class="close">X</span>
+        </form>
+    </div>
 
+    
+    <div class="gallery">
+        <div class="galleryItem">
+            <h1 class="galleryTitle">Enjoy Our Signature Boba!</h1>
+            <img src="https://static.vecteezy.com/system/resources/previews/030/739/955/original/iced-boba-drink-isolated-on-transparent-background-fresh-drink-in-a-plastic-cup-generative-ai-png.png" alt="Boba ice cream" class="galleryImg">
+        </div>
+        <div class="galleryItem">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/050/480/255/small_2x/refreshing-lemonade-served-with-fresh-lemon-slices-cut-out-stock-png.png" alt="Lemonade juice" class="galleryImg">
+            <h1 class="galleryTitle">Cool Down with Lemonade Juice</h1>
+        </div>
+        <div class="galleryItem">
+            <h1 class="galleryTitle">Try Our New Flavours!</h1>
+            <img src="https://png.pngtree.com/png-vector/20240327/ourmid/pngtree-a-collection-ofs-of-boba-drinks-with-boba-balls-png-image_12220550.png" alt="Boba + chocolate ice cream" class="galleryImg">
+        </div>
+        <div class="galleryItem">
+            <img src="https://static.vecteezy.com/system/resources/previews/027/145/854/original/closeup-glass-of-passionfruit-drink-perfect-for-drink-catalog-ai-generated-png.png" alt="Passion fruit juice" class="galleryImg">
+            <h1 class="galleryTitle">Refreshing Boba Passion Fruit Juice</h1>
+        </div>
+        <div class="galleryItem">
+            <img src="https://static.vecteezy.com/system/resources/previews/047/490/976/original/blue-cocktail-with-mint-png.png" alt="cocktail" class="galleryImg">
+            <h1 class="galleryTitle">Blue cocktail with mint</h1>
+        </div>
+        <div class="nsItem">
+            <h3 class="nsTitleSm">SIGNATURE BERRY BLAST & BLITZ SPECIALS</h3>
+            <h1 class="nsTitle">Fresh <span>Flavours</span></h1>
+            <h1 class="nsTitle">Exclusive <span>Treats</span></h1>
+            <a href="#product">
+                <button class="nsButton">BUY NOW!!!</button>
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">About Us( =•ω•= )</h1>
+                <ul class="fList">
+                    <li class="fListItem">Company</li>
+                    <li class="footerLinkItem"><a href="webto:info@berryblast&blitz.com" class="footerLink"><i class="fas fa-envelope"></i> @berryblast&blitz_company.com</a></li>
+                    <li class="fListItem">Contact</li>
+                     <ul class="footerLinks">
+                    <li class="footerLinkItem"><a href="#" class="footerLink"><i class="fas fa-map-marker-alt"></i> 11000 Jalan Kuala Lumpur</a></li>
+                    <li class="footerLinkItem"><a href="tel:+11234567890" class="footerLink"><i class="fas fa-phone"></i> +60 12 345 9876</a></li>
+                    <li class="footerLinkItem"><a href="mailto:info@berryblast&blitz.com" class="footerLink"><i class="fas fa-envelope"></i> info@berryblast&blitz.com</a></li>
+                    <li class="footerLinkItem"><a href="#" class="footerLink"><i class="fas fa-clock"></i> Mon-Sat: 5.20AM - 5.20PM</a></li>
+                </ul>
+            </div>
+                </ul>
+            </div>
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">Useful Links</h1>
+                <ul class="fList">
+                    <li class="fListItem">Support</li>
+                    <li class="fListItem">Refund</li>
+                    <li class="fListItem">FAQ</li>
+                    <li class="fListItem">Feedback</li>
+                    <li class="fListItem">Stories</li>
+                </ul>
+            </div>
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">Our Products</h1>
+                <ul class="fList">
+                    <li class="fListItem">Boba Ice Cream</li>
+                    <li class="fListItem">Boba Passion Fruit Juice</li>
+                    <li class="fListItem">Boba + Chocolate Ice Cream</li>
+                    <li class="fListItem">Lemonade Juice</li>
+                    <li class="fListItem">Mango + Kiwi Ice Cream</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerRight">
+            <div class="footerRightMenu">
+                <h1 class="fMenuTitle">Go go go! Subscribe to our Berry Blast & Blitz updates!</h1>
+                <input type="email" placeholder="your@email.com" class="fInput">
+                <button class="fButton">Subscribe Now!!</button>
+            </div>
+            <div class="footerRightMenu">
+                <div class="fIcons">
+                    <div class="fIcon"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div class="fIcon"><i class="fa-brands fa-twitter"></i></div>
+                    <div class="fIcon"><i class="fa-brands fa-instagram"></i></div>
+                    <div class="fIcon"><i class="fa-brands fa-tiktok"></i></div>
+                </div>
+            </div>
+            <div class="footerRightMenu">
+                <span class="copyright">  @Tralaleloヾ(≧▽≦*) .2025. All rights reserved.| Berry Blast & Blitz</span>
+            </div>
+        </div>
+    </footer>
 
+    <button id="scrollToTopBtn"><i class="fas fa-arrow-up"></i></button>
+    
+    <!-- Particles background container -->
+    <div id="particles-js" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#5d5fef" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#9370db",
+                    opacity: 0.3,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1.5,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    repulse: { distance: 100, duration: 0.4 },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderWrapper = document.querySelector('.sliderWrapper');
+            const sliderItems = document.querySelectorAll('.sliderItem');
+            const dots = document.querySelectorAll('.sliderDot');
+            const productItems = document.querySelectorAll('.productDetails');
+            const menuItems = document.querySelectorAll('.menuItem');
+            const paymentForm = document.querySelector('.payment');
+            const closePaymentButton = document.querySelector('.close');
+            const form = document.querySelector('form');
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
+            let currentIndex = 0;
+            const numSlides = sliderItems.length;
 
-  <!-- 
-    - #BACK TO TOP
-  -->
+            // --- Slider Functionality ---
+            function showSlide(index) {
+                // Ensure index is within bounds
+                const newIndex = (index + numSlides) % numSlides;
+                
+                sliderItems.forEach(item => item.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                sliderItems[newIndex].classList.add('active');
+                dots[newIndex].classList.add('active');
+                
+                // FIXED: Correctly calculate the transform percentage
+                sliderWrapper.style.transform = `translateX(-${newIndex * (100 / numSlides)}%)`;
+                currentIndex = newIndex;
+            }
 
-  <a href="#top" class="back-top-btn active" aria-label="back to top" data-back-top-btn>
-    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
-  </a>
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
+            });
 
+            setInterval(() => {
+                showSlide(currentIndex + 1);
+            }, 5000);
 
+            // Initialize first slide
+            showSlide(0);
 
+            // --- Product Navigation ---
+            // FIXED: Use data-target for robust navigation
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const targetId = this.dataset.target;
+                    const targetProduct = document.getElementById(targetId);
 
+                    productItems.forEach(p => p.classList.remove('active'));
+                    
+                    if (targetProduct) {
+                        targetProduct.classList.add('active');
+                        // Scroll to the product section for visibility
+                        document.getElementById('product').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
 
-  <!-- 
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
+            // --- Payment Form Handling ---
+            document.querySelectorAll('.buyButton, .productDetailButton, .nsButton').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    paymentForm.classList.add('animate');
+                    paymentForm.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
 
-  <!-- 
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+            closePaymentButton.addEventListener('click', function() {
+                this.closest('.payment').classList.remove('animate');
+                setTimeout(() => {
+                    alert('Order canceled. You can continue shopping!');
+                }, 300);
+            });
 
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Order placed successfully! Thank you for your purchase.');
+                this.reset();
+                paymentForm.classList.remove('animate');
+            });
+
+            // --- Scroll Animations ---
+            // FIXED: The 'animate' class is now added by JS, not hardcoded in HTML
+            function animateOnScroll() {
+                const elementsToAnimate = document.querySelectorAll('.productDetails, .galleryItem, .payment');
+                elementsToAnimate.forEach(el => {
+                    const position = el.getBoundingClientRect();
+                    // Animate when the top of the element is within 90% of the viewport height
+                    if (position.top < window.innerHeight * 0.9) {
+                        el.classList.add('animate');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', animateOnScroll);
+            // Initial check on load
+            animateOnScroll();
+
+            // --- Scroll to Top Button ---
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('show');
+                } else {
+                    scrollToTopBtn.classList.remove('show');
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
-
 </html>
